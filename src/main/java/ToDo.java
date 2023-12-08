@@ -8,6 +8,7 @@ public class ToDo {
     private double duration;
     private String repetition;
     private String deadline;
+    private boolean completed;
 
     //costructor
     public ToDo() {
@@ -17,15 +18,17 @@ public class ToDo {
         this.duration = 0;
         this.repetition = "";
         this.deadline = "";
+        this.completed = false;
     }
     // costructor override
-    public ToDo(String name, String time, String date, String repetition, String deadline, double duration){
+    public ToDo(String name, String time, String date, String repetition, String deadline, double duration, boolean completed){
         this.name = name;
         this.time = time;
         this.date = date;
         this.deadline = deadline;
         this.duration = duration;
         this.repetition = repetition;
+        this.completed = completed;
     }
 
     public void setName(String name){
@@ -45,6 +48,9 @@ public class ToDo {
     }
     public void setDeadline(String deadline){
         this.deadline = deadline;
+    }
+    public void setCompleted (boolean completed){
+        this.completed = completed;
     }
 
 
@@ -66,4 +72,16 @@ public class ToDo {
     public String getDeadline(){
         return deadline;
     }
+    public boolean getCompleted(){
+        return completed;
+    }
+
+    // this boolean says that if the effective date = date or not completed, the houldShowToday = true. Otherwise do not return shouldShowToday
+    public boolean shouldShowToday(String effectiveDate){
+        if ((effectiveDate.equals(date)) || (!completed)) {
+            return true;
+        }
+        return false;  
+    }
+        
 }
